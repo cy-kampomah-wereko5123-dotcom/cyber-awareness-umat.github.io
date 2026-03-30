@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0b1f3a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Education & Resources – Sextortion & Cyberbullying Awareness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0b1f3a;
+            --navy-mid: #132d55;
+            --teal: #00b4d8;
+            --teal-light: #90e0ef;
+            --gold: #f4a328;
+            --white: #f8f9fb;
+            --text: #dce6f0;
+            --muted: #8fa9c6;
+            --card-bg: rgba(255,255,255,0.04);
+            --border: rgba(0,180,216,0.18);
+            --danger: #e05c5c;
+            --success: #48c78e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--navy);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 0%, rgba(0,180,216,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 100%, rgba(244,163,40,0.07) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11,31,58,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 68px;
+        }
+
+        .nav-logo { display: flex; align-items: center; gap: 12px; }
+        .nav-logo img { height: 42px; border-radius: 6px; }
+        .nav-logo span { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--teal-light); letter-spacing: 0.03em; }
+        .nav-links { display: flex; gap: 8px; }
+        .nav-links a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.9rem; padding: 8px 20px; border-radius: 50px; transition: all 0.25s; letter-spacing: 0.04em; }
+        .nav-links a.active, .nav-links a:hover { background: var(--teal); color: var(--navy); }
+
+        /* PAGE HERO */
+        .page-hero {
+            position: relative;
+            z-index: 1;
+            padding: 72px 48px 48px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .page-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,180,216,0.12);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 6px 18px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--teal);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: var(--white);
+            max-width: 680px;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .page-hero h1 span { color: var(--teal); }
+
+        .page-hero p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* CONTENT */
+        .content-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 48px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 6px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: all 0.25s;
+            letter-spacing: 0.03em;
+        }
+
+        .tab-btn:hover { color: var(--teal-light); }
+        .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* SECTION COMPONENTS */
+        .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--teal); margin-bottom: 8px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 16px; }
+        .prose { font-size: 0.95rem; line-height: 1.8; color: var(--muted); max-width: 720px; }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 28px;
+        }
+
+        .def-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .def-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 10px; }
+        .def-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+        .def-card .tag {
+            display: inline-block;
+            background: rgba(244,163,40,0.12);
+            border: 1px solid rgba(244,163,40,0.25);
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 50px;
+            padding: 3px 12px;
+            margin-bottom: 14px;
+        }
+
+        /* PREVENTION LIST */
+        .prev-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 28px;
+        }
+
+        .prev-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .prev-block h3 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal);
+            margin-bottom: 18px;
+        }
+
+        .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .check-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* RESPONSE STEPS */
+        .steps-list { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 24px;
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--teal), var(--navy-mid));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .step-content h4 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+        .step-content p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+        /* RESOURCES */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: border-color 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .resource-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+        .resource-card .icon { font-size: 1.6rem; margin-bottom: 12px; }
+        .resource-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+        .resource-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+        .resource-card a { color: var(--teal); text-decoration: none; font-weight: 500; }
+        .resource-card a:hover { text-decoration: underline; }
+        .resource-card .phone-num {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0,180,216,0.1); border: 1px solid var(--border);
+            color: var(--teal-light); font-weight: 700; font-size: 0.88rem;
+            border-radius: 50px; padding: 4px 14px; margin-top: 8px; width: fit-content;
+        }
+        .resource-card .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .resource-card .tag {
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em;
+            border-radius: 50px; padding: 3px 10px; border: 1px solid;
+        }
+        .tag-ghana { background: rgba(0,180,216,0.1); border-color: rgba(0,180,216,0.3); color: var(--teal); }
+        .tag-intl  { background: rgba(244,163,40,0.1); border-color: rgba(244,163,40,0.3); color: var(--gold); }
+        .tag-mental { background: rgba(72,199,142,0.1); border-color: rgba(72,199,142,0.3); color: #48c78e; }
+        .tag-legal  { background: rgba(224,92,92,0.1); border-color: rgba(224,92,92,0.3); color: #e05c5c; }
+        .tag-youth  { background: rgba(155,93,229,0.1); border-color: rgba(155,93,229,0.3); color: #b07fec; }
+        .tag-campus { background: rgba(255,165,0,0.1); border-color: rgba(255,165,0,0.3); color: #ffb347; }
+
+        /* resource section heading */
+        .res-section-title {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.14em; color: var(--teal);
+            display: flex; align-items: center; gap: 14px;
+            margin: 36px 0 16px;
+        }
+        .res-section-title::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+        .res-section-title:first-child { margin-top: 0; }
+
+        /* EMERGENCY BANNER */
+        .emergency-banner {
+            background: linear-gradient(135deg, rgba(224,92,92,0.15), rgba(224,92,92,0.05));
+            border: 1px solid rgba(224,92,92,0.35);
+            border-left: 4px solid #e05c5c;
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 32px;
+            display: flex; align-items: flex-start; gap: 16px;
+        }
+        .emergency-banner .eb-icon { font-size: 2rem; flex-shrink: 0; }
+        .emergency-banner h3 { font-size: 1rem; font-weight: 700; color: #e05c5c; margin-bottom: 8px; }
+        .emergency-banner p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+        .emergency-banner .eb-numbers { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+        .emergency-banner .eb-num {
+            background: rgba(224,92,92,0.15); border: 1px solid rgba(224,92,92,0.35);
+            color: #f08080; font-weight: 800; font-size: 1rem;
+            border-radius: 50px; padding: 6px 18px;
+        }
+
+        /* HELP STEPS (improved) */
+        .step { position: relative; }
+        .step::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 56px;
+            width: 2px; height: calc(100% + 16px);
+            background: var(--border);
+        }
+        .step:last-child::before { display: none; }
+
+        /* PLATFORM REPORT GRID */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .platform-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 18px;
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+        .platform-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+        .platform-card .p-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .platform-card .p-info { flex: 1; }
+        .platform-card .p-name { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+        .platform-card .p-action { font-size: 0.76rem; color: var(--teal); margin-top: 2px; }
+
+        /* MENTAL HEALTH NOTE */
+        .mh-note {
+            background: linear-gradient(135deg, rgba(72,199,142,0.08), rgba(72,199,142,0.03));
+            border: 1px solid rgba(72,199,142,0.25);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-top: 28px;
+            display: flex; gap: 16px; align-items: flex-start;
+        }
+        .mh-note .mh-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .mh-note h4 { font-size: 0.95rem; font-weight: 700; color: #48c78e; margin-bottom: 6px; }
+        .mh-note p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+
+        /* AWARENESS IMG */
+        .awareness-img { width: 100%; max-width: 560px; border-radius: 14px; margin-top: 24px; border: 1px solid var(--border); opacity: 0.88; }
+
+        /* ===== COMMENT SECTION ===== */
+        .comment-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 16px;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .comment-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--white); }
+
+        .comment-count {
+            background: rgba(0,180,216,0.12);
+            border: 1px solid var(--border);
+            color: var(--teal);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 50px;
+        }
+
+        /* FORM */
+        .report-form {
+            background: rgba(19,45,85,0.6);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+
+        .report-form h3 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--teal);
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.92rem;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.25s;
+            width: 100%;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(143,169,198,0.45); }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus { border-color: var(--teal); }
+
+        .form-group select option { background: var(--navy-mid); color: var(--white); }
+
+        .form-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .anon-notice {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .anon-notice::before { content: '🔒'; font-size: 0.9rem; }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--teal), #0096b4);
+            border: none;
+            border-radius: 50px;
+            color: var(--navy);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 12px 32px;
+            cursor: pointer;
+            transition: all 0.25s;
+            letter-spacing: 0.04em;
+        }
+
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,180,216,0.35); }
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-btn.loading { opacity: 0.6; pointer-events: none; }
+
+        /* FILTER BAR */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+
+        .filter-pill {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            padding: 5px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-pill:hover, .filter-pill.active {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* COMMENT CARDS */
+        .comments-list { display: flex; flex-direction: column; gap: 16px; }
+
+        .comment-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 24px;
+            transition: border-color 0.3s;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .comment-card:hover { border-color: rgba(0,180,216,0.3); }
+
+        .comment-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+
+        .comment-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: var(--white);
+        }
+
+        .author-info .name { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+        .author-info .meta { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+
+        .comment-category {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 12px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .cat-sextortion { background: rgba(224,92,92,0.12); border: 1px solid rgba(224,92,92,0.25); color: #e05c5c; }
+        .cat-cyberbullying { background: rgba(244,163,40,0.12); border: 1px solid rgba(244,163,40,0.25); color: var(--gold); }
+        .cat-question { background: rgba(0,180,216,0.12); border: 1px solid var(--border); color: var(--teal); }
+        .cat-experience { background: rgba(72,199,142,0.12); border: 1px solid rgba(72,199,142,0.25); color: var(--success); }
+
+        .comment-body {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .comment-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .reaction-btn {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--muted);
+            font-size: 0.8rem;
+            padding: 4px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .reaction-btn:hover { border-color: var(--teal); color: var(--teal); }
+        .reaction-btn.reacted { background: rgba(0,180,216,0.12); border-color: var(--teal); color: var(--teal); }
+
+        .reply-toggle {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .reply-toggle:hover { color: var(--teal); }
+
+        /* REPLY AREA */
+        .reply-area { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .reply-area.open { display: block; animation: fadeIn 0.25s ease; }
+
+        .reply-input-wrap { display: flex; gap: 10px; align-items: flex-start; }
+
+        .reply-input-wrap textarea {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            color: var(--white);
+            outline: none;
+            resize: none;
+            height: 76px;
+            transition: border-color 0.25s;
+        }
+
+        .reply-input-wrap textarea:focus { border-color: var(--teal); }
+        .reply-input-wrap textarea::placeholder { color: rgba(143,169,198,0.45); }
+
+        .reply-send-btn {
+            background: var(--teal);
+            border: none;
+            border-radius: 10px;
+            color: var(--navy);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 10px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .reply-send-btn:hover { background: var(--teal-light); }
+
+        /* REPLIES */
+        .replies-list { margin-top: 14px; padding-left: 20px; border-left: 2px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
+
+        .reply-item { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
+        .reply-item strong { color: var(--teal-light); }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--muted);
+        }
+
+        .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+        .empty-state p { font-size: 0.9rem; }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--success);
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-size: 0.9rem;
+            color: var(--white);
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.35s ease;
+            max-width: 320px;
+        }
+
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.error { border-left-color: var(--danger); }
+
+        /* FOOTER */
+        footer { position: relative; z-index: 1; border-top: 1px solid var(--border); text-align: center; padding: 32px 48px; font-size: 0.82rem; color: var(--muted); }
+        footer strong { color: var(--teal); }
+
+
+        /* GROUP LOGO */
+        .group-logo {
+            max-width: 200px;
+            width: 100%;
+            border-radius: 14px;
+            margin-top: 24px;
+            border: 1px solid var(--border);
+            display: block;
+        }
+
+        /* ===== MOBILE OPTIMIZATIONS ===== */
+        @media (max-width: 480px) {
+            nav { padding: 0 16px; height: 56px; }
+            .nav-logo img { height: 32px; }
+            .nav-logo span { display: none; }
+            .nav-links a { padding: 6px 10px; font-size: 0.78rem; }
+            .page-hero { padding: 44px 16px 32px; }
+            .page-hero h1 { font-size: 1.6rem; }
+            .content-wrap { padding: 0 16px 72px; }
+            .tabs { gap: 4px; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+            .tabs::-webkit-scrollbar { display: none; }
+            .tab-btn { white-space: nowrap; padding: 10px 14px; font-size: 0.8rem; flex-shrink: 0; }
+            .card-row { grid-template-columns: 1fr; }
+            .prev-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.35rem; }
+            .resource-grid { grid-template-columns: 1fr; }
+            .comment-section { padding: 20px 16px; }
+            .form-row { grid-template-columns: 1fr; }
+            .comment-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .form-footer { flex-direction: column; align-items: flex-start; }
+            .submit-btn { width: 100%; text-align: center; }
+            .filter-bar { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+            .filter-bar::-webkit-scrollbar { display: none; }
+            .filter-pill { white-space: nowrap; flex-shrink: 0; }
+            .step { flex-direction: row; gap: 14px; }
+            .steps-list { gap: 12px; }
+            footer { padding: 24px 16px; }
+            .group-logo { max-width: 150px; }
+            .toast { bottom: 16px; right: 16px; left: 16px; max-width: none; }
+            .awareness-img { max-width: 100%; }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            nav { padding: 0 20px; }
+            .page-hero { padding: 56px 24px 36px; }
+            .content-wrap { padding: 0 24px 80px; }
+            .card-row { grid-template-columns: 1fr; }
+            .prev-grid { grid-template-columns: 1fr; }
+            .resource-grid { grid-template-columns: 1fr 1fr; }
+            .tabs { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+            .tabs::-webkit-scrollbar { display: none; }
+            .tab-btn { white-space: nowrap; flex-shrink: 0; }
+        }
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { padding: 0 20px; }
+            .page-hero, .content-wrap { padding-left: 20px; padding-right: 20px; }
+            .card-row, .prev-grid, .form-row { grid-template-columns: 1fr; }
+            .comment-section { padding: 24px 20px; }
+            .nav-logo span { display: none; }
+        }
+
+        /* TOUCH TARGETS */
+        @media (max-width: 768px) {
+            button, a, .tab-btn, .filter-pill, .reaction-btn, .reply-toggle {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .nav-links a { min-height: 38px; }
+            input, textarea, select { font-size: 16px !important; } /* prevent iOS zoom */
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">
+        <img src="data:image/jpeg;base64,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" alt="UMaT Logo">
+        <span>GEN C × UMaT</span>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Proposal</a>
+        <a href="education.html" class="active">Education & Resources</a>
+    </div>
+</nav>
+
+<div class="page-hero">
+    <div class="badge">Education & Resources</div>
+    <h1>Understanding <span>Sextortion</span> & Cyberbullying</h1>
+    <p>Learn about these issues, how to prevent them, and where to get help. Share your experience anonymously in the community below.</p>
+    <img src="data:image/jpeg;base64,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33231F87Ih1JxlnDW10nFRTzzzzzwlvaEVkc+5TzzzzzzzzX12lGFnGX2XsTi5Zi0FX2GEnxTzzzzzzzzAQBQbDzzzzzzzzzxP03Un3kVk21MNDJEyk330011RTzzzzzzzz+ZK0fvzzzzzzzzzxn3ll3H32n0Aa1p9bGNXGGFn3xTzzzzzzzL+fJ3iLzzzzzzzzzy1k+0FlX2n2ISRwBdUMEUMEX3RTzzzzzzz+6dQJZXzzzzzzzzzxTn+l01X32kUkUZ/pw0Nt30XxxTzzzzzzzyyNAMXzzzzzzzzzzzzx33003kX33Oe0v1TF30UFPHxTzzzzzzzwxplDjzzzzzzzzzzzT2kQ0HEWH3avm7m5n3HE3l29xTzzzzzzzijh5uDzzzzzzzzzzxT30D13EP31OPTwcRyfUX3mffxTzzzzzzyTRySM6xTzzzzzzzzzT3kGmn200WY8RnHx7zhWk109xTzzzzy+k+JKvJtpPDzzzzzzzwr1Wl3mV1FhKzWPjC9X33333/wAU88888qyirc19LV1O88888888n9tN9p5B1Uhh8lYm8paV5hF/0U888888s0cAwIcEYs88888888199tVVtBN5Bct14suYl999994U8888888cMgE4k08888888888199995xdt15SDujXfRxV95Fl8U8888888s88c88c8888888888c9FBd99x9FFdp8FRdZd9hFN18U88888888888888888888888889N999999tR1xBVA9d51t9pF8U88888888888888888888888808991999999ohVw9899999tNUU888888888888888888888888c898899994dQV9R989999999UU8888888888888888888888888998899ogMABFBU999999895UU888888888888888888888888089pV8x19INN4MY999ld959d0U888888888888888888888888d89tdhJ889994wN999Rd999R8U88888888888888888888888899V98tN999999d9txxN99995UU8888888888888888888888881R9x9999FV9999955VZ999958U888888888888888888888888d9lp95xlP9xx519ptN9t1551wU88888888888888888888888899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" alt="GEN-C Digital Safety Initiative" class="group-logo">
+</div>
+
+<div class="content-wrap">
+
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(this,'definitions')">Definitions</button>
+        <button class="tab-btn" onclick="switchTab(this,'impacts')">Impacts</button>
+        <button class="tab-btn" onclick="switchTab(this,'prevention')">Prevention</button>
+        <button class="tab-btn" onclick="switchTab(this,'privacy')">Privacy Tips</button>
+        <button class="tab-btn" onclick="switchTab(this,'response')">If You're a Victim</button>
+        <button class="tab-btn" onclick="switchTab(this,'resources')">Resources</button>
+        <button class="tab-btn" onclick="switchTab(this,'community')">💬 Community</button>
+    </div>
+
+    <!-- DEFINITIONS -->
+    <div class="tab-panel active" id="tab-definitions">
+        <div class="section-label">Understand the Terms</div>
+        <h2 class="section-title">What Are These Crimes?</h2>
+        <p class="prose">Digital crimes against personal dignity are more common than many realize. Knowing the terms is the first step to protecting yourself and others.</p>
+        <div class="card-row">
+            <div class="def-card">
+                <div class="tag">Sextortion</div>
+                <h3>What is Sextortion?</h3>
+                <p>Sextortion is a form of blackmail where someone threatens to share explicit images or videos of you unless you meet their demands — often money or more content. It typically starts through social media or dating apps and escalates quickly.</p>
+            </div>
+            <div class="def-card">
+                <div class="tag" style="background:rgba(0,180,216,0.12);border-color:rgba(0,180,216,0.25);color:var(--teal);">Cyberbullying</div>
+                <h3>What is Cyberbullying?</h3>
+                <p>Cyberbullying involves using digital platforms to harass, threaten, or humiliate someone. This can include spreading rumors, posting hurtful comments, sharing private information, or sustained harassment campaigns online.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPACTS -->
+    <div class="tab-panel" id="tab-impacts">
+        <div class="section-label">Why It Matters</div>
+        <h2 class="section-title">Impact on Victims</h2>
+        <p class="prose">These crimes cause lasting harm that extends far beyond the digital world. Victims often suffer in silence due to shame and fear of judgment.</p>
+        <div class="card-row" style="margin-top:24px;">
+            <div class="def-card"><div class="tag" style="background:rgba(224,92,92,0.1);border-color:rgba(224,92,92,0.2);color:#e05c5c;">Mental Health</div><h3>Emotional & Psychological</h3><p>Severe anxiety, depression, PTSD, social isolation, and in extreme cases, self-harm or suicidal thoughts. Victims often feel shame and blame themselves.</p></div>
+            <div class="def-card"><div class="tag" style="background:rgba(244,163,40,0.1);border-color:rgba(244,163,40,0.2);color:var(--gold);">Academic</div><h3>Academic Decline</h3><p>Inability to concentrate, frequent absences, declining performance, and in some cases, dropping out entirely due to ongoing harassment.</p></div>
+            <div class="def-card"><div class="tag" style="background:rgba(72,199,142,0.1);border-color:rgba(72,199,142,0.2);color:var(--success);">Social</div><h3>Social Isolation</h3><p>Withdrawal from friends and family, fear of judgment, and inability to trust others. Relationships suffer long-term damage.</p></div>
+            <div class="def-card"><div class="tag" style="background:rgba(0,180,216,0.1);border-color:var(--border);color:var(--teal);">Financial</div><h3>Financial Loss</h3><p>Many victims pay extortion demands to stop the threats, often losing significant sums with no guarantee the abuse will end.</p></div>
+        </div>
+        <img src="http://infografolio.com/cdn/shop/files/cyberbullying-slides-slides-the-impact-of-cyberbullying-on-mental-health-infographic-template-powerpoint-template-keynote-template-google-slides-template-infographic-template-37210262.jpg?v=1707499923" alt="Impact of Cyberbullying on Mental Health" class="awareness-img">
+    </div>
+
+    <!-- PREVENTION -->
+    <div class="tab-panel" id="tab-prevention">
+        <div class="section-label">Stay Safe</div>
+        <h2 class="section-title">Prevention Strategies</h2>
+        <div class="prev-grid">
+            <div class="prev-block">
+                <h3>Against Sextortion</h3>
+                <ul class="check-list">
+                    <li>Never share explicit photos or videos, even with trusted people.</li>
+                    <li>Use strong, unique passwords and enable two-factor authentication.</li>
+                    <li>Be cautious of fast-developing online relationships and unknown friend requests.</li>
+                    <li>Keep social media accounts private and limit personal information shared.</li>
+                    <li>Cover your webcam and avoid clicking suspicious links.</li>
+                </ul>
+                <p style="font-size:0.78rem;color:var(--muted);margin-top:16px;">Source: Ghana Internet Safety Foundation & FBI</p>
+            </div>
+            <div class="prev-block">
+                <h3>Against Cyberbullying</h3>
+                <ul class="check-list">
+                    <li>Only accept friend requests from people you know in real life.</li>
+                    <li>Think before posting — avoid sharing sensitive personal information.</li>
+                    <li>Block and report bullies on all platforms immediately.</li>
+                    <li>Don't respond or retaliate; it often escalates the situation.</li>
+                    <li>Educate yourself on privacy settings for every platform you use.</li>
+                </ul>
+                <p style="font-size:0.78rem;color:var(--muted);margin-top:16px;">Source: Cyber Security Authority (CSA) Ghana & UNICEF</p>
+            </div>
+        </div>
+        <img src="https://www.fortinet.com/content/dam/fortinet/images/cyberglossary/protect-from-sextortion.png" alt="How to Protect Yourself Against Sextortion" class="awareness-img">
+    </div>
+
+    <!-- PRIVACY -->
+    <div class="tab-panel" id="tab-privacy">
+        <div class="section-label">Protect Yourself</div>
+        <h2 class="section-title">Online Privacy Tips</h2>
+        <p class="prose">Practical tips tailored for young adults in Ghana to keep your digital life secure.</p>
+        <div class="steps-list" style="margin-top:28px;">
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Strong Passwords & 2FA</h4><p>Use strong, unique passwords for each account and enable two-factor authentication to secure your profiles.</p></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Private Accounts</h4><p>Set your social media accounts to private and regularly review privacy settings to control who sees your information.</p></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><h4>No Explicit Content</h4><p>Avoid sharing explicit images or videos even in trusted relationships — they can be misused against you.</p></div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Limit Personal Details</h4><p>Don't disclose your address, phone number, or exact location online. This includes in bios and posts.</p></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Location Services</h4><p>Disable location services when not needed and be cautious with geotagged posts that reveal your whereabouts.</p></div></div>
+            <div class="step"><div class="step-num">6</div><div class="step-content"><h4>Suspicious Links</h4><p>Never open unsolicited messages or click suspicious links — these are common phishing and malware vectors.</p></div></div>
+            <div class="step"><div class="step-num">7</div><div class="step-content"><h4>Shared Devices</h4><p>Always log out of accounts on shared devices and close unused accounts to minimize your digital footprint.</p></div></div>
+        </div>
+        <img src="https://www.priv.gc.ca/media/5118/info-sm_eng.png" alt="Staying Safe on Social Media" class="awareness-img">
+    </div>
+
+    <!-- RESPONSE -->
+    <div class="tab-panel" id="tab-response">
+        <div class="section-label">Take Action</div>
+        <h2 class="section-title">What to Do If You're a Victim</h2>
+        <p class="prose">If you are experiencing sextortion or cyberbullying, know that you are <strong style="color:var(--teal)">not alone</strong> and there are clear steps you can take right now. Acting quickly matters — follow these steps in order.</p>
+
+        <!-- Emergency banner -->
+        <div class="emergency-banner" style="margin-top:28px;">
+            <div class="eb-icon">🚨</div>
+            <div>
+                <h3>In Immediate Danger or Crisis?</h3>
+                <p>If you feel unsafe, threatened, or are in mental health crisis, call for help right now. Ghana emergency lines are free and available 24/7.</p>
+                <div class="eb-numbers">
+                    <span class="eb-num">📞 191</span>
+                    <span class="eb-num">📞 112</span>
+                    <span class="eb-num">📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5d7c0d5cad7d1e5c6d6c48bc2cad38bc2cd">[email&#160;protected]</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="steps-list" style="margin-top:28px;">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>Do NOT Pay or Comply</h4>
+                    <p>Never meet the demands — paying almost always leads to more demands, not freedom. Complying gives the perpetrator more power over you and does not guarantee the content will not be shared anyway. This is the most important rule.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>Stop All Contact & Block</h4>
+                    <p>Immediately stop responding to the perpetrator. Block them on every platform they contacted you on. Do not delete your account yet — this could remove evidence needed for reporting.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>Document & Preserve All Evidence</h4>
+                    <p>Before blocking, take screenshots of all messages, threats, usernames, profile links, and any images or videos they sent. Note the dates and times. Save everything — this is your evidence for authorities.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h4>Report to Authorities in Ghana</h4>
+                    <p>File a report with the <strong style="color:var(--teal)">Cyber Security Authority (CSA)</strong> or the Ghana Police Service Cybercrime Unit. You can also report online.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+                        <a href="https://csa.gov.gh/report" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,180,216,0.1);border:1px solid var(--border);color:var(--teal);font-size:0.82rem;font-weight:600;border-radius:50px;padding:6px 16px;text-decoration:none;">🌐 csa.gov.gh/report</a>
+                        <a href="/cdn-cgi/l/email-protection#6b190e1b04191f2b08180a450c041d450c03" style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,180,216,0.1);border:1px solid var(--border);color:var(--teal);font-size:0.82rem;font-weight:600;border-radius:50px;padding:6px 16px;text-decoration:none;">📧 <span class="__cf_email__" data-cfemail="e6948396899492a6859587c8818990c8818e">[email&#160;protected]</span></a>
+                        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,180,216,0.1);border:1px solid var(--border);color:var(--teal);font-size:0.82rem;font-weight:600;border-radius:50px;padding:6px 16px;">📞 191 / 112</span>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                    <h4>Report to the Platform Where It Happened</h4>
+                    <p>Every major platform has built-in tools to report abuse, non-consensual content, and blackmail. Reporting triggers account reviews and can lead to removal. Click below to go directly to each platform's reporting page.</p>
+                    <div class="platform-grid">
+                        <a href="https://www.facebook.com/help/212722115425932" target="_blank" class="platform-card"><div class="p-icon">📘</div><div class="p-info"><div class="p-name">Facebook</div><div class="p-action">Report abuse →</div></div></a>
+                        <a href="https://help.instagram.com/192435014247952" target="_blank" class="platform-card"><div class="p-icon">📸</div><div class="p-info"><div class="p-name">Instagram</div><div class="p-action">Report content →</div></div></a>
+                        <a href="https://support.tiktok.com/en/safety-hc/account-and-user-safety/report-a-problem" target="_blank" class="platform-card"><div class="p-icon">🎵</div><div class="p-info"><div class="p-name">TikTok</div><div class="p-action">Report problem →</div></div></a>
+                        <a href="https://support.snapchat.com/en-US/a/report-abuse-in-app" target="_blank" class="platform-card"><div class="p-icon">👻</div><div class="p-info"><div class="p-name">Snapchat</div><div class="p-action">Report abuse →</div></div></a>
+                        <a href="https://support.twitter.com/articles/20170439" target="_blank" class="platform-card"><div class="p-icon">🐦</div><div class="p-info"><div class="p-name">X / Twitter</div><div class="p-action">Report content →</div></div></a>
+                        <a href="https://www.whatsapp.com/legal/updates/terms-of-service?lang=en" target="_blank" class="platform-card"><div class="p-icon">💬</div><div class="p-info"><div class="p-name">WhatsApp</div><div class="p-action">Report contact →</div></div></a>
+                        <a href="https://support.google.com/youtube/answer/2802268" target="_blank" class="platform-card"><div class="p-icon">▶️</div><div class="p-info"><div class="p-name">YouTube</div><div class="p-action">Report video →</div></div></a>
+                        <a href="https://www.stopncii.org/" target="_blank" class="platform-card"><div class="p-icon">🛡️</div><div class="p-info"><div class="p-name">StopNCII</div><div class="p-action">Remove images →</div></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">6</div>
+                <div class="step-content">
+                    <h4>Tell Someone You Trust</h4>
+                    <p>Shame and fear are tools perpetrators use to keep victims silent. Telling a trusted person — a friend, family member, lecturer, or counselor — is a brave and important step. You do not have to carry this alone. The UMaT Counseling Unit provides confidential support to all students.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">7</div>
+                <div class="step-content">
+                    <h4>Take Care of Your Mental Health</h4>
+                    <p>Being victimized online can cause anxiety, shame, depression, and trauma. These feelings are valid and real. Seeking professional mental health support is not weakness — it is how you recover and reclaim your life.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mh-note">
+            <div class="mh-icon">💚</div>
+            <div>
+                <h4>Remember: It Is Never Your Fault</h4>
+                <p>Whatever happened, the responsibility lies entirely with the perpetrator — not you. You deserve support, justice, and recovery. Many people have been through this and come out stronger. Reach out for help and take it one step at a time.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="tab-panel" id="tab-resources">
+        <div class="section-label">Get Help</div>
+        <h2 class="section-title">Resources & Help Lines</h2>
+        <p class="prose">You are not alone. Below is a comprehensive list of organizations, hotlines, and online tools available to support you — in Ghana and internationally. All resources are free unless noted.</p>
+
+        <!-- Ghana Resources -->
+        <div class="res-section-title">🇬🇭 Ghana — Official & Government</div>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="icon">🛡️</div>
+                <h4>Cyber Security Authority (CSA)</h4>
+                <p>Ghana's lead government body for reporting cybercrimes including sextortion, online fraud, and cyberbullying. File a report online or via email 24/7.</p>
+                <div class="tag-list"><span class="tag tag-ghana">Ghana</span><span class="tag tag-legal">Legal</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://csa.gov.gh" target="_blank">🌐 csa.gov.gh</a>
+                    <a href="https://csa.gov.gh/report" target="_blank">📋 Online Report Form →</a>
+                    <a href="/cdn-cgi/l/email-protection#beccdbced1cccafeddcddf90d9d1c890d9d6">📧 <span class="__cf_email__" data-cfemail="1f6d7a6f706d6b5f7c6c7e31787069317877">[email&#160;protected]</span></a>
+                    <span class="phone-num">📞 +233 (0) 302 813 789</span>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🚔</div>
+                <h4>Ghana Police Service — Cybercrime Unit</h4>
+                <p>The Ghana Police Cybercrime Unit investigates online crimes including sextortion, blackmail, and harassment. You can report in person at any station or call the emergency line.</p>
+                <div class="tag-list"><span class="tag tag-ghana">Ghana</span><span class="tag tag-legal">Legal</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://police.gov.gh" target="_blank">🌐 police.gov.gh</a>
+                    <span class="phone-num">📞 191</span>
+                    <span class="phone-num">📞 112 (Emergency)</span>
+                    <span class="phone-num">📞 18555 (Toll-free)</span>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🌐</div>
+                <h4>Ghana Internet Safety Foundation (GISF)</h4>
+                <p>A non-profit dedicated to promoting safe internet use in Ghana. Offers educational resources, counseling referrals, and community outreach programs for youth and families.</p>
+                <div class="tag-list"><span class="tag tag-ghana">Ghana</span><span class="tag tag-youth">Youth</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://gisfoundation.com" target="_blank">🌐 gisfoundation.com</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">⚖️</div>
+                <h4>Legal Aid Commission — Ghana</h4>
+                <p>Provides free legal assistance to Ghanaians who cannot afford a lawyer. They can guide you through the legal process if you are a victim of a cybercrime or sexual exploitation.</p>
+                <div class="tag-list"><span class="tag tag-ghana">Ghana</span><span class="tag tag-legal">Legal</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://legalaid.gov.gh" target="_blank">🌐 legalaid.gov.gh</a>
+                    <span class="phone-num">📞 0800 900 123</span>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">👩‍⚕️</div>
+                <h4>DOVVSU — Domestic Violence & Victim Support</h4>
+                <p>The Ghana Police DOVVSU unit handles cases involving sexual exploitation, threats, and abuse. They are trained to handle sensitive cases with confidentiality and care.</p>
+                <div class="tag-list"><span class="tag tag-ghana">Ghana</span><span class="tag tag-legal">Legal</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <span class="phone-num">📞 0800 800 800</span>
+                    <p style="margin-top:6px;font-size:0.78rem;">Visit your nearest Ghana Police Station and ask for DOVVSU.</p>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🏫</div>
+                <h4>UMaT Campus Counseling Unit</h4>
+                <p>The University of Mines and Technology Counseling Unit offers free, confidential mental health support to all enrolled students. You can walk in or request an appointment.</p>
+                <div class="tag-list"><span class="tag tag-campus">Campus</span><span class="tag tag-mental">Mental Health</span></div>
+                <div style="margin-top:12px;">
+                    <p>📍 Visit the Student Welfare office on campus during working hours.</p>
+                    <p style="margin-top:6px;font-size:0.8rem;color:var(--muted);">All sessions are strictly confidential.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mental Health -->
+        <div class="res-section-title">💚 Mental Health & Emotional Support</div>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="icon">🧠</div>
+                <h4>Mental Health Authority — Ghana</h4>
+                <p>The national authority overseeing mental health services in Ghana. Provides referrals to counselors, psychologists, and psychiatric facilities across the country.</p>
+                <div class="tag-list"><span class="tag tag-ghana">Ghana</span><span class="tag tag-mental">Mental Health</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://mha.gov.gh" target="_blank">🌐 mha.gov.gh</a>
+                    <span class="phone-num">📞 0800 11 1000</span>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">💬</div>
+                <h4>Crisis Text Line (International)</h4>
+                <p>Text-based crisis support available globally. If you are in emotional distress or feeling hopeless, trained counselors respond via text message — no phone call needed.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-mental">Mental Health</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://www.crisistextline.org" target="_blank">🌐 crisistextline.org</a>
+                    <p style="font-size:0.82rem;color:var(--teal);font-weight:600;">Text HOME to 741741</p>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🫂</div>
+                <h4>7 Cups — Online Emotional Support</h4>
+                <p>Free online chat with trained volunteer listeners and licensed therapists. Available 24/7 and covers topics including trauma, anxiety, and abuse recovery.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-mental">Mental Health</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://www.7cups.com" target="_blank">🌐 7cups.com →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🌍</div>
+                <h4>Befrienders Worldwide</h4>
+                <p>An international network of emotional support volunteers. They provide confidential listening support for people in distress, including victims of abuse and exploitation.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-mental">Mental Health</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://www.befrienders.org" target="_blank">🌐 befrienders.org →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Removal & Digital Help -->
+        <div class="res-section-title">🖼️ Image Removal & Digital Tools</div>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="icon">🛑</div>
+                <h4>StopNCII.org</h4>
+                <p>A free global tool that creates a digital fingerprint (hash) of intimate images to prevent them from being shared on participating platforms — without anyone seeing the actual image.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://www.stopncii.org" target="_blank">🌐 stopncii.org →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🔍</div>
+                <h4>Take It Down — NCMEC</h4>
+                <p>A free service by the National Center for Missing & Exploited Children to help remove online sexual images of people under 18. Completely anonymous process.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-youth">Youth</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://takeitdown.ncmec.org" target="_blank">🌐 takeitdown.ncmec.org →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">📋</div>
+                <h4>Cyber Civil Rights Initiative</h4>
+                <p>Provides a crisis helpline, legal referrals, and detailed guidance specifically for victims of non-consensual intimate image sharing (revenge porn / sextortion).</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-legal">Legal</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://cybercivilrights.org" target="_blank">🌐 cybercivilrights.org →</a>
+                    <span class="phone-num">📞 1-844-878-2274</span>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🗑️</div>
+                <h4>Google — Remove Personal Info</h4>
+                <p>Google allows you to request removal of explicit or personal images from search results. Use their official request form to delist harmful content quickly.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://support.google.com/websearch/troubleshooter/9685456" target="_blank">🌐 Remove from Google →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- International Organizations -->
+        <div class="res-section-title">🌍 International Organizations</div>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="icon">🔎</div>
+                <h4>FBI — Internet Crime Complaint Center (IC3)</h4>
+                <p>The FBI's dedicated internet crime reporting platform. Handles international sextortion cases and coordinates with local law enforcement globally.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-legal">Legal</span></div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                    <a href="https://www.ic3.gov" target="_blank">🌐 ic3.gov →</a>
+                    <a href="https://www.fbi.gov/investigate/cyber" target="_blank">🌐 fbi.gov/cyber →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🌍</div>
+                <h4>UNICEF — Child Online Protection</h4>
+                <p>UNICEF advocates for children's digital rights and provides extensive resources on online safety, reporting, and policy for young people across Africa and globally.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-youth">Youth</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://www.unicef.org/protecting-children-online" target="_blank">🌐 unicef.org/child-protection →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">🏛️</div>
+                <h4>INTERPOL — Cybercrime</h4>
+                <p>INTERPOL coordinates international cybercrime investigations. If the perpetrator is overseas, a report to INTERPOL can initiate cross-border action.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-legal">Legal</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://www.interpol.int/Crimes/Cybercrime" target="_blank">🌐 interpol.int/cybercrime →</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="icon">📚</div>
+                <h4>Thorn — Sextortion Resources</h4>
+                <p>Thorn fights child sexual exploitation and has produced extensive guides specifically for sextortion victims, parents, and educators. Resources are free and available online.</p>
+                <div class="tag-list"><span class="tag tag-intl">International</span><span class="tag tag-youth">Youth</span></div>
+                <div style="margin-top:12px;">
+                    <a href="https://www.thorn.org/sextortion" target="_blank">🌐 thorn.org/sextortion →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick reference callout -->
+        <div class="mh-note" style="margin-top:36px;">
+            <div class="mh-icon">📌</div>
+            <div>
+                <h4>Save These Numbers</h4>
+                <p>Screenshot this page or save these emergency contacts in your phone now — before you need them. <strong style="color:var(--teal-light)">CSA Cybercrime: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f5d4a5f405d5b6f4c5c4e01484059014847">[email&#160;protected]</a> | Ghana Police: 191 / 112 | Toll-free: 18555 | DOVVSU: 0800 800 800.</strong> All calls and reports are confidential.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMUNITY COMMENTS -->
+    <div class="tab-panel" id="tab-community">
+        <div class="comment-section">
+            <div class="comment-header">
+                <div>
+                    <div class="section-label">Anonymous Community</div>
+                    <h2>Share Your Experience</h2>
+                </div>
+                <div class="comment-count" id="count-badge">0 posts</div>
+            </div>
+
+            <!-- SUBMISSION FORM -->
+            <div class="report-form">
+                <h3>🔒 Submit Anonymously — All Posts Are Confidential</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Display Name (optional)</label>
+                        <input type="text" id="inp-name" placeholder="Anonymous" maxlength="40">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="inp-category">
+                            <option value="question">❓ Question</option>
+                            <option value="experience">💬 Shared Experience</option>
+                            <option value="sextortion">⚠️ Sextortion</option>
+                            <option value="cyberbullying">🔴 Cyberbullying</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                    <label>Your Story / Question</label>
+                    <textarea id="inp-story" rows="5" placeholder="Share what you've experienced or ask a question. This is a safe, moderated space..."></textarea>
+                </div>
+                <div class="form-footer">
+                    <span class="anon-notice">All submissions are kept confidential and moderated.</span>
+                    <button class="submit-btn" id="submit-btn" onclick="submitComment()">Post to Community</button>
+                </div>
+            </div>
+
+            <!-- FILTER BAR -->
+            <div class="filter-bar">
+                <span class="filter-label">Filter:</span>
+                <button class="filter-pill active" onclick="filterComments('all', this)">All</button>
+                <button class="filter-pill" onclick="filterComments('question', this)">Questions</button>
+                <button class="filter-pill" onclick="filterComments('experience', this)">Experiences</button>
+                <button class="filter-pill" onclick="filterComments('sextortion', this)">Sextortion</button>
+                <button class="filter-pill" onclick="filterComments('cyberbullying', this)">Cyberbullying</button>
+            </div>
+
+            <!-- COMMENTS LIST -->
+            <div class="comments-list" id="comments-list"></div>
+            <div class="empty-state" id="empty-state">
+                <div class="icon">💬</div>
+                <p>No posts yet. Be the first to share or ask a question.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast"></div>
+
+<footer>
+    <p>&copy; 2026 <strong>GEN C</strong> — University of Mines and Technology. All rights reserved.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ---- TABS ----
+    function switchTab(btn, id) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + id).classList.add('active');
+    }
+
+    // ---- COMMENTS STATE ----
+    const STORAGE_KEY = 'umat_comments_v1';
+    const avatarColors = ['#00b4d8','#f4a328','#48c78e','#9b5de5','#e05c5c','#0096b4'];
+
+    function getComments() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; }
+    }
+
+    function saveComments(arr) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+    }
+
+    function getCatClass(cat) {
+        return { sextortion:'cat-sextortion', cyberbullying:'cat-cyberbullying', question:'cat-question', experience:'cat-experience' }[cat] || 'cat-question';
+    }
+
+    function getCatLabel(cat) {
+        return { sextortion:'⚠️ Sextortion', cyberbullying:'🔴 Cyberbullying', question:'❓ Question', experience:'💬 Experience' }[cat] || cat;
+    }
+
+    function timeAgo(ts) {
+        const diff = (Date.now() - ts) / 1000;
+        if (diff < 60) return 'just now';
+        if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+        return Math.floor(diff/86400) + 'd ago';
+    }
+
+    function initials(name) {
+        return name.split(' ').map(w => w[0]||'').slice(0,2).join('').toUpperCase() || 'A';
+    }
+
+    function colorForName(name) {
+        let h = 0;
+        for (let c of name) h = (h * 31 + c.charCodeAt(0)) & 0xffffffff;
+        return avatarColors[Math.abs(h) % avatarColors.length];
+    }
+
+    // ---- RENDER ----
+    let activeFilter = 'all';
+
+    function renderComments() {
+        const all = getComments();
+        const filtered = activeFilter === 'all' ? all : all.filter(c => c.category === activeFilter);
+        const list = document.getElementById('comments-list');
+        const empty = document.getElementById('empty-state');
+        const badge = document.getElementById('count-badge');
+
+        badge.textContent = all.length + (all.length === 1 ? ' post' : ' posts');
+        list.innerHTML = '';
+
+        if (filtered.length === 0) {
+            empty.style.display = 'block';
+            return;
+        }
+        empty.style.display = 'none';
+
+        [...filtered].reverse().forEach(c => {
+            const el = buildCommentEl(c, all);
+            list.appendChild(el);
+        });
+    }
+
+    function buildCommentEl(c, allComments) {
+        const reacted = (c.reacts || []).includes('__self__');
+        const replyCount = (c.replies || []).length;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'comment-card';
+        wrap.dataset.id = c.id;
+        wrap.dataset.cat = c.category;
+
+        const initChar = initials(c.name);
+        const col = colorForName(c.name);
+        const repliesHtml = (c.replies || []).map(r =>
+            `<div class="reply-item"><strong>${escHtml(r.name)}:</strong> ${escHtml(r.body)}</div>`
+        ).join('');
+
+        wrap.innerHTML = `
+            <div class="comment-top">
+                <div class="comment-author">
+                    <div class="avatar" style="background:${col}">${initChar}</div>
+                    <div class="author-info">
+                        <div class="name">${escHtml(c.name)}</div>
+                        <div class="meta">${timeAgo(c.ts)}</div>
+                    </div>
+                </div>
+                <span class="comment-category ${getCatClass(c.category)}">${getCatLabel(c.category)}</span>
+            </div>
+            <div class="comment-body">${escHtml(c.body)}</div>
+            <div class="comment-actions">
+                <button class="reaction-btn ${reacted ? 'reacted' : ''}" onclick="toggleReact('${c.id}', this)">
+                    🤝 <span>${(c.reacts||[]).length} Support</span>
+                </button>
+                <button class="reply-toggle" onclick="toggleReply('${c.id}')">
+                    💬 Reply${replyCount > 0 ? ` (${replyCount})` : ''}
+                </button>
+            </div>
+            <div class="reply-area" id="reply-area-${c.id}">
+                <div class="reply-input-wrap">
+                    <textarea id="reply-inp-${c.id}" placeholder="Write a supportive reply..." rows="3"></textarea>
+                    <button class="reply-send-btn" onclick="submitReply('${c.id}')">Send</button>
+                </div>
+                ${replyCount > 0
+                    ? `<div class="replies-list" id="replies-${c.id}">${repliesHtml}</div>`
+                    : `<div class="replies-list" id="replies-${c.id}" style="display:none">${repliesHtml}</div>`
+                }
+            </div>
+        `;
+        return wrap;
+    }
+
+    function escHtml(str) {
+        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ---- SUBMIT ----
+    function submitComment() {
+        const name = (document.getElementById('inp-name').value.trim() || 'Anonymous').substring(0,40);
+        const cat  = document.getElementById('inp-category').value;
+        const body = document.getElementById('inp-story').value.trim();
+
+        if (!body) { showToast('Please write something before posting.', true); return; }
+
+        const btn = document.getElementById('submit-btn');
+        btn.classList.add('loading');
+        btn.textContent = 'Posting…';
+
+        setTimeout(() => {
+            const all = getComments();
+            const entry = { id: 'c' + Date.now(), name, category: cat, body, ts: Date.now(), reacts: [], replies: [] };
+            all.push(entry);
+            saveComments(all);
+
+            document.getElementById('inp-name').value = '';
+            document.getElementById('inp-story').value = '';
+
+            renderComments();
+            btn.classList.remove('loading');
+            btn.textContent = 'Post to Community';
+            showToast('Your post has been shared with the community. 💙');
+
+            document.getElementById('comments-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 600);
+    }
+
+    // ---- REACT ----
+    function toggleReact(id, btn) {
+        const all = getComments();
+        const c = all.find(x => x.id === id);
+        if (!c) return;
+        c.reacts = c.reacts || [];
+        const selfIdx = c.reacts.indexOf('__self__');
+        if (selfIdx === -1) { c.reacts.push('__self__'); }
+        else { c.reacts.splice(selfIdx, 1); }
+        saveComments(all);
+        renderComments();
+    }
+
+    // ---- REPLY TOGGLE ----
+    function toggleReply(id) {
+        const area = document.getElementById('reply-area-' + id);
+        if (!area) return;
+        area.classList.toggle('open');
+        if (area.classList.contains('open')) {
+            const inp = document.getElementById('reply-inp-' + id);
+            if (inp) inp.focus();
+        }
+    }
+
+    // ---- SUBMIT REPLY ----
+    function submitReply(id) {
+        const inp = document.getElementById('reply-inp-' + id);
+        if (!inp || !inp.value.trim()) { showToast('Please write a reply first.', true); return; }
+
+        const all = getComments();
+        const c = all.find(x => x.id === id);
+        if (!c) return;
+        c.replies = c.replies || [];
+        c.replies.push({ name: 'Community Member', body: inp.value.trim(), ts: Date.now() });
+        saveComments(all);
+
+        inp.value = '';
+        renderComments();
+        showToast('Reply posted! 💬');
+    }
+
+    // ---- FILTER ----
+    function filterComments(cat, btn) {
+        activeFilter = cat;
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        renderComments();
+    }
+
+    // ---- TOAST ----
+    function showToast(msg, isError = false) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.className = 'toast' + (isError ? ' error' : '');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    // ---- SEED DATA ----
+    function seedIfEmpty() {
+        const all = getComments();
+        if (all.length === 0) {
+            const seeds = [
+                {
+                    id:'c0001', name:'Anonymous', category:'experience',
+                    body:"I experienced cyberbullying last year in my hall. Reporting to the platform and talking to the counseling unit helped a lot. Don't suffer alone.",
+                    ts: Date.now()-86400000*2, reacts:['__sample__'], replies:[]
+                },
+                {
+                    id:'c0002', name:'Concerned Student', category:'question',
+                    body:'If someone is threatening to share my photos unless I send money, is it safe to report to the police? Will my identity be protected?',
+                    ts: Date.now()-86400000, reacts:[],
+                    replies:[{ name:'Community Member', body:'Yes! The CSA and police are trained to handle these cases confidentially. Report immediately — do not pay.', ts: Date.now()-80000 }]
+                },
+                {
+                    id:'c0003', name:'Anonymous', category:'sextortion',
+                    body:'I was targeted through Instagram. Someone posed as a student and slowly gained my trust. Please be careful of fast online relationships.',
+                    ts: Date.now()-43200000, reacts:['__sample2__','__sample3__'], replies:[]
+                },
+            ];
+            saveComments(seeds);
+        }
+    }
+
+    // ---- INIT ----
+    seedIfEmpty();
+    renderComments();
+
+    setInterval(() => {
+        const communityPanel = document.getElementById('tab-community');
+        if (communityPanel && communityPanel.classList.contains('active')) renderComments();
+    }, 60000);
+</script>
+
+</body>
+</html>
